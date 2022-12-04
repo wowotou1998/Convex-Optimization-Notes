@@ -1,4 +1,4 @@
-# 三角函数的正交性
+# 第一节, 三角函数的正交性
 三角函数的标准形式为公式 2.1 所示
 $$
 f(t) = A \sin (\omega_t+\varphi) \tag{2.1} 
@@ -45,7 +45,7 @@ $$
 \begin{aligned}
 & \int_{-\pi}^\pi \sin (m \mathrm{x}) \cos (\mathrm{nx}) d x \\
 &=\frac{1}{2} \int_{-\pi}^\pi \sin [(m-n) x]+\sin [(m+n) x] \mathrm{dx} \\
-&=\frac{1}{2}\int_{-\pi}^\pi \sin [(m-n) x] \mathrm{dx}+\frac{1}{2} \int_{-\pi}^\pi \sin [(m+n) x] \mathrm{dx} \quad(2.9)
+&=\frac{1}{2}\int_{-\pi}^\pi \sin [(m-n) x] \mathrm{dx}+\frac{1}{2} \int_{-\pi}^\pi \sin [(m+n) x] \mathrm{dx}  \tag{2.9}
 \end{aligned}
 $$
 因为三角函数在- $\pi$ 到 $\pi$ 内的积分为 0 , 因此当 $m \neq n$ 时, 式 $2.7 、 2.8 、 2.9$ 的结果必定为 0, 因此可以得出以下结论, **频率不同的三角函数相乘在一个周期内 $(-\pi$ 到 $\pi)$ 的积分必定为 0.**
@@ -120,7 +120,7 @@ $$
 \varphi=\arctan \left(-\frac{b_n}{a_n}\right) \tag{2.20}
 $$
 
-# 第三节 复变函数到僡里叶级数
+# 第三节 复变函数到傅里叶级数
 常用复数函数表达式:
 $$
 e^{j \theta}=\cos \theta+j \sin \theta \tag{3.20}
