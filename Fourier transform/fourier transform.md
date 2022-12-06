@@ -215,3 +215,122 @@ $$
 而通过对其虛部与实部反正切，就可以求得该频率波的相位.
 
 # 第四节 离散傅里叶变换.
+## 引言
+由于计算机只能在离散的空间当中处理信息, 因此, 我们只能计算离散信号中所包含的离散频率的内容.
+回顾之前在周期为 $T$ 的原信号 $f(t)$ 中进行连续傅里叶变换:
+
+> $$
+> A_n=\frac{1}{T} \int_0^T f(t) e^{-j n \omega t} d t, \tag{4.0}
+> $$
+
+> $$
+> f(t)=\sum_{n=-\infty}^{\infty} A_n e^{j n \omega t}.  \tag{4.1}
+> $$
+
+可以看出, 原信号虽然周期已经确定, 为 $T$, 但是由于信号是连续的, 因此在周期 $T$ 内有无穷多个采样点, 另外, 我们需要探究频率为 $(-\infty, +\infty)$ 的信号在原信号中所占据的频率, 由于要筛选的信号频率没有上界和下界, 且频率分辨率趋向于0, 因此我们要在无穷多个周期信号中筛选出构成原信号的那一部分, 对于计算机来说这非常困难.
+
+## 离散傅里叶变换
+假定原始信号 $f(t)$ 在周期 $T$ 内均匀采样了 $N$ 个数据点, 采样间隔为 $T_s$, 
+那么原始信号的周期 $T = N \cdot T_s$,
+原始信号的频率为 $\frac{1}{N \cdot T_s}$,
+原始信号的角频率为 $\frac{2 \pi}{N \cdot T_s}$,
+那么基础角频率 $\omega = \frac{2 \pi}{N \cdot T_s}$,
+这同样也决定了频率分辨率为 $\frac{1}{N \cdot T_s}$,
+另外, 根据采样定理, 假定原始信号所包含的周期信号中的最高频率为 $F_{max}$, 那么采样率 $S_r$ 必须满足:
+
+$$
+S_r \geq 2 F_{max}
+$$
+
+因此, 如果采样率一旦确定, 那么我们所能分离出来的周期信号的最高频率也就确定了, 详细的内容见下一小节.
+
+## 离散傅里叶变换的形式
+
+> $$
+> A_n=\frac{1}{N \cdot T_s} 
+\sum_{k=0}^{N-1} 
+f(k \cdot T_s) 
+e^{-j n \frac{2 \pi }{N \cdot T_s} k \cdot T_s} 
+T_s, \tag{4.2}
+> $$
+
+> $$
+> f(k \cdot T_s)=\sum_{n = 0}^{N-1} A_n e^{j n \frac{2 \pi }{N \cdot T_s}  k \cdot T_s}.  \tag{4.3}
+> $$
+
+上述两个式子是离散傅里叶正变换和离散傅里叶逆变换, 其中
+$f(k \cdot T_s)$ 表示第 $k$ 个采样点时原始信号的值,
+$\frac{2 \pi}{N \cdot T_s}$ 表示原始信号的角频率,
+我们对式(4.2) 和 (4.3) 进行化简 (约掉 $T_s$), 得到:
+
+> $$
+> A_n=\frac{1}{N}
+\sum_{k=0}^{N-1}
+f(k \cdot T_s)
+e^{-j n \frac{2 \pi }{N} k}, \tag{4.4}
+> $$
+
+> $$
+> f(k \cdot T_s)=\sum_{n = 0}^{N-1} A_n e^{j n \frac{2 \pi }{N}  k}.  \tag{4.5}
+> $$
+
+为了与科学计算包里的表达保持一致, 我们对式(4.4)和(4.5)重新表述一下:
+
+> $$
+> y[n]=\frac{1}{N}
+\sum_{k=0}^{N-1}
+x[k]
+e^{-j n \frac{2 \pi }{N} k}, \tag{4.6}
+> $$
+
+> $$
+> x[n]=\sum_{n = 0}^{N-1} y[n] e^{j n \frac{2 \pi }{N}  k}.  \tag{4.7}
+> $$
+
+根据离散傅里叶的运算过程, 我们可以看出, 离散傅里叶变换只能确定频率为 $\frac{0}{N \cdot T_s}, \frac{1}{N \cdot T_s}, \frac{2}{N \cdot T_s},\cdots, \frac{(N-1)}{N \cdot T_s}$的周期信号的振幅和相位 (相应的角频率为 $\frac{2 \pi 0}{N \cdot T_s}, \frac{2 \pi 1}{N \cdot T_s}, \frac{2 \pi 2}{N \cdot T_s}, \cdots, \frac{2 \pi (N-1)}{N \cdot T_s}$).
+另外, 根据采样间隔, 我们可以计算出采样率 $S_r = \frac{1}{T_s}$, 采样率决定了可分离的周期信号的频率上限. 因此我们能分离出的周期信号的频率最高为 $\frac{1}{2 T_s}$ ($S_r \geq 2 F_{max}$).
+
+我们注意到 式(4.6) 中能探测的最高频率为 $\frac{N-1}{N \cdot T_s}$, 这个频率其实非常接近 采样率 $\frac{1}{T_s}$, 根据采样率决定了可分离的周期信号的频率上限, 因此, 我们分离出的将近一半的频率都要废弃 (一半的频率都小于 $\frac{1}{2 T_s}$).
+
+## 为什么频幅图是接近左右对称的
+
+**每个频率的振幅是根据计算出的复数的模得到的. 而共轭复数的模会得出一致的结论.**
+证明如下
+$$
+\begin{aligned}
+ y[n] &=\frac{1}{N} \sum_{k=0}^{N-1} x[k] e^{-j \frac{2 \pi n}{N} \cdot k} \\
+ y[N-n]&=\frac{1}{N} \sum_{k=0}^{N-1} x[k] e^{-j \frac{2 \pi(N-n)}{N} \cdot k}, n =1, 2, \cdots, N-1 \\
+\end{aligned}
+$$
+可以看出 $y[n]$ 与 $y[N-n]$ 最大的不同在于 $e^{-j \frac{2 \pi n}{N} \cdot k}$ 和 $e^{-j \frac{2 \pi (N-n)}{N} \cdot k}$, 其中:
+
+$$
+\begin{aligned}
+e^{-j \frac{2 \pi n}{N} \cdot k} &= 
+\cos \left(-\frac{2 \pi n k}{N}\right)+j \sin \left(-\frac{2 \pi n k}{N}\right) \\
+{} & = \cos \left(\frac{2 \pi n k}{N}\right) - j \sin \left(\frac{2 \pi n k}{N}\right)
+ \\
+e^{-j \frac{2 \pi (N-n)}{N} \cdot k} &= 
+\cos \left(-\frac{2 \pi (N-n) k}{N}\right)+j \sin \left(-\frac{2 \pi (N-n) k}{N}\right) 
+\\
+{} & = \cos \left(2 \pi  + \frac{2 \pi n k}{N}\right) + j \sin \left(2 \pi  + \frac{2 \pi n k}{N}\right)
+\\
+{} & = \cos \left(\frac{2 \pi n k}{N}\right) + j \sin \left(\frac{2 \pi n k}{N}\right)
+ \\
+\end{aligned}
+$$
+
+由上式可以看出每一个求和子项 $y[n]$ 和 $y[N-n]$ 都是共轭的, 那最后的求和结果也是共轭的, 因此有:
+$$
+|y[n]| = |y[N-n]|, n = 1, 2, \cdots, N-1.
+$$
+而当 n=0 时, $y[0]$ 的值相当于对所有离散抽样点求和, 那么有:
+$$
+y[0] = \frac{1}{N} \sum_{k=0}^{N-1}x[k] = 常数
+$$
+
+**因此, 除了y[0]计算出的值可以直接使用, 其他的采样点构成的频幅图是呈现出左右对称的, 且只有一半左右的频幅是有用的.**
+
+## 实际Python包是如何构建数据的.
+![](scipy_fft.png)  
+也就是说, 实际情况 scipy 进行正向傅里叶变换的时候会省略掉一个系数 $\frac{1}{N}$,但是会在反向傅里叶变换的时候加回来, 由于我们根据式(4.6)的内容, 对 $y[n]$ 取模会得到原来振幅的 $\frac{1}{2}$, **但是$y[0]$ 不需要乘以 $2$**. 又因为scipy 计算 $y[n]$ 时没有乘以系数 $\frac{1}{N}$, 因此使用 scipy 计算出的 $y[n]$ 的模我们需要乘以 $\frac{1}{N}$ 然后乘以 $2$. **再次强调 $y[0]$ 不需要乘以 $2$**.
