@@ -339,4 +339,4 @@ $$
 
 ## 超参数之间的关系
 
-![](interaction_of_hyperparameters.png)  
+![](interaction.png)  
