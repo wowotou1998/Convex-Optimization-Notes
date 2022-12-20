@@ -11,49 +11,50 @@ $t$ 为时间变量,
 $A$ 为波幅,  
 $\omega$ 为角速度,  
 $\varphi$ 为相位,  
-我们可以通过公式2.2求得这个正弦波的频率.
-
+公式2.2说明了角速度和频率还有周期之间的关系.
 $$
-f=\frac{\omega}{2 \pi}  \tag{2.2}
+\omega=\frac{2\pi}{T}\\
+\quad\\
+f=\frac{1}{T}  \tag{2.2}
 $$
 
-并由式2.2可知, 角速度和正弦波的频率是正相关的.
+由式2.2可知, 角速度和正弦波的频率是正相关的.
 
 同时, 因为三角函数是周期函数, 其在 $-\pi$ 到 $\pi$ 的积分必定为 0, 由此性质可写出式 $2.3$, $2.4$
 $$
-\int_{-\pi}^\pi \sin (\mathrm{nx}) d x=0 \tag{2.3}
+\int_{-\pi}^\pi \sin (n x) d x=0 \tag{2.3}
 $$
 $$
-\int_{-\pi}^\pi \cos (\mathrm{nx}) d x=0 \tag{2.4}
+\int_{-\pi}^\pi \cos (n x) d x=0 \tag{2.4}
 $$
 设某三角函数为
 $$
 f(x)=\sin (n x) \tag{2.5}
 $$
-在式 $2.5$ 两边同时乘以 $\sin (\mathrm{mx})$ 同时,对两边在 $-\pi$ 到 $\pi$ 内进行积分, 得出
+在式 $2.5$ 两边同时乘以 $\sin (m x)$ 同时,对两边在 $-\pi$ 到 $\pi$ 内进行积分, 得出
 $$
-\int_{-\pi}^\pi f(x) \sin (m x) d x=\int_{-\pi}^\pi \sin (\mathrm{nx}) \sin (m x) d x \tag{2.6}
+\int_{-\pi}^\pi f(x) \sin (m x) d x=\int_{-\pi}^\pi \sin (n x) \sin (m x) d x \tag{2.6}
 $$
 由三角函数的积化和差公式,上式可变形为
 $$
 \begin{aligned}
-& \int_{-\pi}^\pi f(x) \sin (m x) \mathrm{dx}=\frac{1}{2} \int_{-\pi}^\pi \cos [(m-n) x]-\cos [(m+n) x] \mathrm{dx}=\frac{1}{2} \\
-& \int_{-\pi}^\pi \cos [(m-n) x] \mathrm{dx}-\frac{1}{2} \int_{-\pi}^\pi \cos [(m+n) x] \mathrm{dx} \tag{2.7}
+& \int_{-\pi}^\pi f(x) \sin (m x) d x=\frac{1}{2} \int_{-\pi}^\pi \cos [(m-n) x]-\cos [(m+n) x] d x=\frac{1}{2} \\
+& \int_{-\pi}^\pi \cos [(m-n) x] d x-\frac{1}{2} \int_{-\pi}^\pi \cos [(m+n) x] d x \tag{2.7}
 \end{aligned}
 $$
 依据上述推导方法我们可以继续推导出下列公式:
 $$
 \begin{aligned}
-& \int_{-\pi}^\pi \cos (\mathrm{mx}) \cos (\mathrm{nx}) d x \\
-&=\frac{1}{2} \int_{-\pi}^\pi \cos [(m-n) x]+\cos [(m+n x)] \mathrm{dx} \\
-&=\frac{1}{2}  \int_{-\pi}^\pi \cos [(m-n) x] \mathrm{dx}+\frac{1}{2} \int_{-\pi}^\pi \cos [(m+n) x] \mathrm{dx} \tag{2.8}
+& \int_{-\pi}^\pi \cos (m x) \cos (n x) d x \\
+&=\frac{1}{2} \int_{-\pi}^\pi \cos [(m-n) x]+\cos [(m+n x)] d x \\
+&=\frac{1}{2}  \int_{-\pi}^\pi \cos [(m-n) x] d x+\frac{1}{2} \int_{-\pi}^\pi \cos [(m+n) x] d x \tag{2.8}
 \end{aligned}
 $$
 $$
 \begin{aligned}
-& \int_{-\pi}^\pi \sin (m \mathrm{x}) \cos (\mathrm{nx}) d x \\
-&=\frac{1}{2} \int_{-\pi}^\pi \sin [(m-n) x]+\sin [(m+n) x] \mathrm{dx} \\
-&=\frac{1}{2}\int_{-\pi}^\pi \sin [(m-n) x] \mathrm{dx}+\frac{1}{2} \int_{-\pi}^\pi \sin [(m+n) x] \mathrm{dx}  \tag{2.9}
+& \int_{-\pi}^\pi \sin (m x) \cos (n x) d x \\
+&=\frac{1}{2} \int_{-\pi}^\pi \sin [(m-n) x]+\sin [(m+n) x] d x \\
+&=\frac{1}{2}\int_{-\pi}^\pi \sin [(m-n) x] d x+\frac{1}{2} \int_{-\pi}^\pi \sin [(m+n) x] d x  \tag{2.9}
 \end{aligned}
 $$
 因为三角函数在- $\pi$ 到 $\pi$ 内的积分为 0 , 因此当 $m \neq n$ 时, 式 $2.7 、 2.8 、 2.9$ 的结果必定为 0, 因此可以得出以下结论, **频率不同的三角函数相乘在一个周期内 $(-\pi$ 到 $\pi)$ 的积分必定为 0.**
@@ -81,7 +82,7 @@ $$
 设 $a_n, b_n$ 为:
 
 $$
-a_n=c_n \cos \varphi \tag{2.12} 
+a_n=c_n \cos \varphi \tag{2.12}
 $$
 
 $$
@@ -91,37 +92,41 @@ $$
 那么,式2.11可写作
 
 > $$
-> f(t)=c_0+\sum_{n=1}^{\infty}\left[a_n \cos (\mathrm{n} \omega \mathrm{t})+b_n \sin (\mathrm{n} \omega \mathrm{t})\right] \tag{2.14}
+> f(t)=c_0+\sum_{n=1}^{\infty}\left[a_n \cos (n \omega t)+b_n \sin (n \omega t)\right] \tag{2.14}
 > $$
 
-式2.14实际上即是傅里叶级数的展开式, 从上式可知,若要将一个周期信号展开为傅里叶级数形式,实 现上就是确定级数 $a_n b_n$ ，那么就下来我们讨论的就是如何求出 $a_n b_n$ .
-在式2.14的两边同时乘以一个 $\sin (\mathrm{k} \omega \mathrm{t})$, 并对它们在一个周期内进行积分,那么就有
+式2.14实际上即是傅里叶级数的展开式, 从上式可知,若要将一个周期信号展开为傅里叶级数形式,实 现上就是确定级数 $a_n, b_n$ ，那么就下来我们讨论的就是如何求出 $a_n,b_n$ .
+在式2.14的两边同时乘以一个 $\sin (k \omega t)$, 并对它们在一个周期内进行积分,那么就有
 
 $$
 \begin{aligned}
-& \int_0^T f(t) \sin (\mathrm{k} \omega \mathrm{t}) d t \\
-&=\int_0^T c_0 \sin (\mathrm{k} \omega \mathrm{t}) \mathrm{dt} \\
-&+ \int_0^T \sin (\mathrm{k} \omega \mathrm{t}) \sum_{n=1}^{\infty}
+& \int_0^T f(t) \sin (k \omega t) d t \\
+&=\int_0^T c_0 \sin (k \omega t) d t + \int_0^T \sin (k \omega t) \sum_{n=1}^{\infty}
 \left[
-    a_n \cos (\mathrm{n} \omega \mathrm{t})+
-    b_n \sin (\mathrm{n} \omega \mathrm{t})
-\right] \mathrm{dt} \tag{2.15}
+    a_n \cos (n \omega t)+
+    b_n \sin (n \omega t)
+\right] d t \tag{2.15}
 \end{aligned}
 $$
 
-**根据第一节的推论，频率不同的三角函数相乘在一个周期内的积分必定为 0**, 因此，仅有 $k=n$ 时不为 0, 那么其中 $\int_0^T c_0 \sin (\mathrm{k} \omega \mathrm{t}) \mathrm{dt}$ 结果为 0,
-$\int_0^T a_n \cos (\mathrm{n} \omega \mathrm{t}) \sin (\mathrm{k} \omega \mathrm{t}) \mathrm{dt}$ 结果也必定为 0 , 
-因此上式可以进一步化简为
+**根据第一节的推论，频率不同的三角函数相乘在一个周期内的积分必定为 0**.
+因此，仅有 $k=n$ 时不为 0. 
+首先有 $\int_0^T c_0 \sin (k \omega t) d t = 0$,
+其次根据正交性有 $\int_0^T a_n \cos (n \omega t) \sin (k \omega t) d t=0$,
+因此上式可以进一步化简根据 $\sin(n \omega t)^2 = \frac{1-\cos(2 n \omega t)}{2}$ 有：
 $$
-\int_0^T f(t) \sin (\mathrm{k} \omega \mathrm{t}) d t=b_n \int_0^T \sin (\mathrm{n} \omega \mathrm{t})^2 d t=b_n \frac{T}{2} \\ \tag{2.16}
+\boxed{\int_0^T f(t) \sin (k \omega t) d t}
+=b_n \int_0^T \sin (n \omega t)^2 d t
+=b_n \int_0^T \frac{1-\cos(2 n \omega t)}{2} d t
+=\boxed{b_n \frac{T}{2}} \\ \tag{2.16}
 $$
 因此,得出
 $$
-b_n=\frac{2}{T} \int_0^T f(t) \sin (\mathrm{n} \omega \mathrm{t}) \mathrm{dt} \tag{2.17}
+b_n=\frac{2}{T} \int_0^T f(t) \sin (n \omega t) d t \tag{2.17}
 $$
 依照上述方法,同样可以计算出
 $$
-a_n=\frac{2}{T} \int_0^T f(t) \cos (\mathrm{n} \omega \mathrm{t}) \mathrm{dt} \tag{2.18}
+a_n=\frac{2}{T} \int_0^T f(t) \cos (n \omega t) d t \tag{2.18}
 $$
 同时，通过以下公式可以得知傅里叶级数与波幅相位之间的关系
 $$
@@ -147,13 +152,13 @@ $$
 可知，该复变函数可以看做是一个角速度为 $\omega$, 周期为 $T$ 在复平面上绕原点旋转的半径为 1 的圆.
 将公式代回到复变函数中，那么，是变函数可以写成公式3.2的形式
 $$
-e^{\mathrm{j} \omega t}=\cos \omega t+j \sin \omega t \tag{3.2}
+e^{j \omega t}=\cos \omega t+j \sin \omega t \tag{3.2}
 $$
 设一组三角函数，其频率是 $\cos \omega t$ 的n倍，其中 $n$ 是大于 0 的正整数，那么可以定义这一组三角函 数为:
 $$
 \begin{aligned}
-& \cos (\mathrm{nwt})=\frac{e^{\mathrm{j} w \mathrm{i}}+e^{-\mathrm{j} \omega t}}{2}(3.3) \\
-& \sin (\mathrm{nwt})=\frac{e^{\mathrm{j} \omega \mathrm{t}}-e^{-\mathrm{m} \omega \mathrm{t} t}}{2 j}(3.4)
+& \cos (n \omega t)=\frac{e^{j n \omega t}+e^{-j n \omega t}}{2}(3.3) \\
+& \sin (n \omega t)=\frac{e^{j n \omega t}-e^{-j n \omega t}}{2 j}(3.4)
 \end{aligned}
 $$
 将公式3.3与3.4代回到式2.14中，可得到如下公式
@@ -164,7 +169,7 @@ $$
 因为
 $$
 \begin{aligned}
-& a_{-n}=\frac{2}{T} \int_0^T f(t) \cos (-n \omega t) \mathrm{dt}=a_n \\
+& a_{-n}=\frac{2}{T} \int_0^T f(t) \cos (-n \omega t) d t=a_n \\
 & b_{-n}=\frac{2}{T} \int_0^T f(t) \sin (-n \omega t) d t=-b_n
 \end{aligned}
 $$
@@ -189,13 +194,13 @@ $$
 > f(t)=\sum_{n=-\infty}^{\infty} A_n e^{j n \omega t}, \quad A_n=\frac{\left(a_n-j b_n\right)}{2} \tag{3.31}
 > $$
 
-式 $3.31$ 就是复数形式的傅里叶级数，其中， $A_n$ 是一个复数,在式 $3.31$ 的两边同时乘以一个 $e^{-j k w t}$, 并对它们在一个周期内进行积分，得到式子 $3.32$
+式 $3.31$ 就是复数形式的傅里叶级数，其中， $A_n$ 是一个复数,在式 $3.31$ 的两边同时乘以一个 $e^{-j k \omega t}$, 并对它们在一个周期内进行积分，得到式子 $3.32$
 
 $$
 \int_0^T f(t) e^{-j k \omega t} d t=\int_0^T \sum_{n=-\infty}^{+\infty} A_n e^{j(n-k) \omega t} d t \tag{3.32}
 $$
 
-由第一节的正交性推论可知,当 $\mathrm{n}$ 与 $\mathrm{k}$ 不相等时,积分结果必定为 0 ,仅当 $n=k$ 时，右表达式有值，因此， 推导出 $3.33$
+由第一节的正交性推论可知,当 $n$ 与 $k$ 不相等时,积分结果必定为 0 ,仅当 $n=k$ 时，右表达式有值，因此， 推导出 $3.33$
 
 $$
 \int_0^T f(t) e^{-j n \omega t} d t=A_n T \tag{3.33}
