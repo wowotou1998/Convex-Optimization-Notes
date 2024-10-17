@@ -20,7 +20,7 @@ $$
 预测步通过求解以下线性方程组来计算预测方向：
 
 $$
- \begin{pmatrix}
+\begin{pmatrix}
 A & 0 & 0 \\
 0 & A^T & I \\
 S & 0 & X 
